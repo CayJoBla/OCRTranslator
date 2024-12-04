@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% autoescape false %}
+<html ng-app="DeseretTranslatorApp" id="ng-app" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope itemtype="http://schema.org/Article">
+  <head>
+    <!-- Angular.js -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script src="/js/deseret.js"></script>
+
+
+    <!-- app icon -->
+    <link rel="icon" sizes="192x192" href="images/apple-touch-icon-precomposed.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- Facebook metadata -->
+    <meta property="og:title" content="Deseret Alphabet Translator API"/>
+    <meta property="og:url" content="http://2deseret.com/api"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://2deseret.com/images/fb.png"/>
+    <meta property="og:site_name" content="2deseret.com"/>
+    <meta property="og:description" content="Integrate the Deseret Alphabet Translator into your own application."/>
+    <!-- End Facebook metadata -->
+
+    <!-- Google+ metadata -->
+    <!-- Add the following three tags inside head. -->
+    <meta itemprop="name" content="Deseret Alphabet Translator API">
+    <meta itemprop="description" content="English-to-Deseret-Alphabet translator API">
+    <meta itemprop="image" content="http://2deseret.org/images/fb.png">
+    <!-- +1 button: Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- End Google+ -->
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  	<title>Deseret Alphabet Translator REST API</title>
+    <meta name="description" content="English to Deseret Alphabet translator API"/>
+    <meta name="keywords" content="API, REST API, deseret alphabet, translator, phonetic, alphabets, deseret, mormon, mormons, history, mormon history, brigham young, george watt, lds, honey bee, utah territory"/>
+    <meta name="robots" content="index,follow"/>
+  	<link href='//fonts.googleapis.com/css?family=IM+Fell+English:400,400italic' rel='stylesheet' type='text/css'>
+
+  	<!-- Bootstrap -->
+  	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- End Bootstrap -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  	<link rel="stylesheet" type="text/css" href="css/deseret.css">
+
+  </head>
+  <body role="document">
+    <div class="api-doc">
+      <div id="fb-root"></div>
+
+        <!-- Facebook Like -->
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <!-- end Facebook like -->
+
+      	<div class="container-fluid" role="main">
+        	<div class="row">
+          	<div class="col-md-2"></div>
+          	<div class="col-md-8 center-block text-center">
+              <a href="/"><img id="beehive-img" src="/images/fading-beehive.png"/></a>
+              <h1><a href="/">Deseret Alphabet Translator</a><br/>REST API</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <h2>Resource URL</h2>
+              <p class="resource-url">http://2deseret.com/json/translation</p>
+              <h2>Parameters</h2>
+              <dl class="dl-horizontal">
+                <dt>english</dt><dd>English to be translated into Deseret Alphabet</dd>
+                <dt>deseret</dt><dd>Deseret Alphabet to be translated into English</dd>
+              </dl>
+              <p>If both parameters are provided, only <i>english</i> will be used. Deseret Alphabet characters should be in Unicode, or in the ASCII representation provided in blue letters on the Deseret Alphabet <a href="/#keyboard">keyboard</a> (as supported by the AdamicBee typeface):</p> <a href="/#keyboard"><img id="keyboard-screenshot" src="/images/keyboard.png"/></a>
+
+<ul>
+<li>
+<h3>Example: Deseret Alphabet to English</h3>
+<pre>POST
+http://2deseret.com/json/translation
+{"english": "Learning the Deseret Alphabet is fun."}</pre>
+<samp><pre>{
+    "deseret": "𐐢𐐲𐑉𐑌𐐮𐑍 𐑄 𐐔𐐯𐑅𐐨𐑉𐐯𐐻 𐐈𐑊𐑁𐐰𐐺𐐯𐐻 𐐮𐑆 𐑁𐐲𐑌."
+}</pre></samp>
+</li>
+
+<li>
+<h3>Example: Deseret Alphabet (Unicode) to English.</h3>
+<pre>POST
+http://2deseret.com/json/translation
+{"deseret": "𐐢𐐲𐑉𐑌𐐮𐑍 𐑄 𐐔𐐯𐑅𐐨𐑉𐐯𐐻 𐐈𐑊𐑁𐐰𐐺𐐯𐐻 𐐮𐑆 𐑁𐐲𐑌."}</pre>
+<samp><pre>{
+    "english": "Learning the Deseret Alphabet is fun."
+}</pre></samp>
+</li>
+
+<li>
+<h3>Example: Deseret Alphabet (ASCII) to English.</h3>
+<pre>POST
+http://2deseret.com/json/translation
+{"deseret": "L-rn@&lt; \ D`sir`t &amp;lf^b`t @z f-n."}</pre>
+<samp><pre>{
+    "english": "Learning the Deseret Alphabet is fun."
+}</pre></samp>
+</li>
+</ul>
+              <!-- Facebook and Google+ buttons -->
+              <div class="social-buttons">
+                <div class="fb-like" data-href="http://2deseret.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                <span class="g-plusone-container"><div class="g-plusone" data-size="medium" data-href="http://2deseret.com"></div></span>
+              </div>
+
+            </div>
+          </div
+          <div class="row">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8 center-block text-center">
+
+              <div class="copyright">Created by Nathan Hadfield<br/>Questions or comments? <a href="//bitbucket.org/twistedroot/deseret-alphabet-translator/issues">I'd love to hear from you.</a></div>
+
+          </div>
+      	</div>
+
+    	</div>
+    </div>  <!-- end ng-controller -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endautoescape %}

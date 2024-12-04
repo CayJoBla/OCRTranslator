@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% autoescape false %}
+<html ng-app="DeseretTranslatorApp" id="ng-app" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope itemtype="http://schema.org/Article">
+  <head>
+    <!-- Angular.js -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.24/angular.min.js"></script>
+    <script src="/js/deseret.js"></script>
+
+
+    <!-- app icon -->
+    <link rel="icon" sizes="192x192" href="images/apple-touch-icon-precomposed.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- Facebook metadata -->
+    <meta property="og:title" content="Deseret Alphabet Translator"/>
+    <meta property="og:url" content="http://2deseret.com"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="http://2deseret.com/images/fb.png"/>
+    <meta property="og:site_name" content="2deseret.com"/>
+    <meta property="og:description" content="Bad speller? You'd have thanked Brigham Young for the Deseret Alphabet. Transport yourself to 1850s Territorial Utah with this useless but fascinating English-to-Deseret-Alphabet translator."/>
+    <!-- End Facebook metadata -->
+
+    <!-- Google+ metadata -->
+    <!-- Add the following three tags inside head. -->
+    <meta itemprop="name" content="Deseret Alphabet Translator">
+    <meta itemprop="description" content="English-to-Deseret-Alphabet translator">
+    <meta itemprop="image" content="http://2deseret.org/images/fb.png">
+    <!-- +1 button: Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- End Google+ -->
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  	<title>Deseret Alphabet Translator</title>
+    <meta name="description" content="English to Deseret Alphabet translator"/>
+    <meta name="keywords" content="deseret alphabet, translator, phonetic, alphabets, deseret, mormon, mormons, history, mormon history, brigham young, george watt, lds, honey bee, utah territory"/>
+    <meta name="robots" content="index,follow"/>
+  	<link href='//fonts.googleapis.com/css?family=IM+Fell+English:400,400italic' rel='stylesheet' type='text/css'>
+
+  	<!-- Bootstrap -->
+  	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- End Bootstrap -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  	<link rel="stylesheet" type="text/css" href="css/deseret.css">
+
+  </head>
+  <body ng-app="DeseretTranslatorApp" role="document">
+    <div ng-controller="TranslationController">
+      <div id="fb-root"></div>
+
+        <!-- Facebook Like -->
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <!-- end Facebook like -->
+
+      	<div class="container-fluid" role="main">
+        	<div class="row">
+          	<div class="col-md-2"></div>
+          	<div class="col-md-8 center-block text-center">
+              <img id="beehive-img" src="/images/fading-beehive.png"/>
+              <h1>Deseret Alphabet Translator</h1>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 center-block text-center">
+            
+              <div id="brigham-quote">
+
+              The advantages of this alphabet will soon be realized, especially by foreigners. .&nbsp;.&nbsp;.&nbsp;It will also be very advantageous to our children. It will be the means of introducing uniformity in our orthography, and the years that are now required to learn to read and spell can be devoted to other studies.
+              <div><img id="brigham-sig" src="/images/brigham-young.png"/></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 center-block text-center">
+
+              <form>
+                <div>
+                <h3>English</h3>
+                <textarea ng-model="english" ng-init="english='{{ english }}'" id="input_well" name="input_text" class="form-control" rows="4" placeholder="Type English here, or Deseret Alphabet below." autofocus ng-keyup="englishToDeseret()">{{english}}</textarea></div>
+
+                <!-- <button id="translate_button" type="submit" ng-click="translate()" class="btn btn-info" value="Translate"><span class="glyphicon glyphicon-circle-arrow-down"></span> Translate </button> -->
+
+                <h3>Deseret Alphabet</h3>
+                <textarea ng-model="deseret" ng-init="deseret='{{ deseret }}'" id="output_well" class="form-control" rows="4" ng-keyup="deseretToEnglish()">{{deseret}}</textarea>
+
+                <div id="keyboard">
+                </div>
+              </form>
+
+              <!-- Facebook and Google+ buttons -->
+              <div class="social-buttons">
+                <div class="fb-like" data-href="http://2deseret.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+                <span class="g-plusone-container"><div class="g-plusone" data-size="medium" data-href="http://2deseret.com"></div></span>
+              </div>
+
+
+              <div class="api-link"><p>Looking to provide translation in your own application?</p><p>See the <a href="/api"> REST API</a>.</p></div>
+
+              <div class="help-links">
+          	    <div class="help-link"><b>More Deseret Alphabet</b></div>
+
+                <div class="help-link"><a title="Wikipedia entry about the Deseret Alphabet" href="//en.wikipedia.org/wiki/Deseret_alphabet">Wikipedia</a></div>
+                <div class="help-link"><a title="Deseret Alphabet Facebook Group" href="https://www.facebook.com/groups/441103599359510/">Deseret Alphabet Facebook Group</a></div>
+          	    <div class="help-link"><a title='"The Deseret Alphabet Experiment," by Richard G. Moore' href="http://rsc.byu.edu/archived/volume-7-number-3-2006/deseret-alphabet-experiment">The Deseret Alphabet Experiment</a></div>
+                <div class="help-link"><a title="DeseretAlphabet.org" href="http://www.deseretalphabet.org">DeseretAlphabet.org</a></div>
+          	    <div class="help-link"><a title="xkcd Deseret Alphabet Edition" href="http://www.deseretalphabet.info/XKCD/">xkcd Deseret Alphabet Edition</a></div>
+                <div class="help-link"><a title="A Complete Guide to Reading and Writing the Deseret Alphabet" href="http://copper.chem.ucla.edu/~jericks/Historical%20or%20Technical/Linguistics/Deseret_Guide.pdf">A Complete Guide to Reading and Writing the Deseret Alphabet</a></div>
+                <div class="help-link"><a title="Writing in the Deseret Alphabet (with Web Fonts)" href="http://elliotec.com/writing-in-the-deseret-alphabet/">Writing in the Deseret Alphabet (with Web Fonts)</a></div>
+                <br/>
+                <div class="api-link">Pronunciation data provided by the <a href="//en.wikipedia.org/wiki/Moby_Project#Pronunciator">Moby Project</a>.</div>
+          	 </div>
+
+              <div class="copyright">Created by Nathan Hadfield<br/>Questions or comments? <a href="//bitbucket.org/twistedroot/deseret-alphabet-translator/issues">I'd love to hear from you.</a></div>
+
+          	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  	
+          	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            <script src="/js/keyboard.js"></script>
+
+            <!-- FastClick removes 300ms delay on mobile devices -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.3/fastclick.min.js"></script>
+            <script>$(function() { FastClick.attach(document.body); });</script>
+
+          </div>
+      	</div>
+
+    	</div>
+    </div>  <!-- end ng-controller -->
+  </body>
+</html>
+{% endautoescape %}

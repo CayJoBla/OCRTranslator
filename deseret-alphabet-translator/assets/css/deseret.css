@@ -1,0 +1,314 @@
+/* @override http://2deseret.com/css/deseret.css */
+/* @override http://localhost:8080/css/deseret.css */
+
+#keyboard {
+	margin-top: 8px;
+}
+
+.deseret-key {
+	display: inline-block;
+	border: 1px solid #c4c3a8;
+	height: 45px;
+	line-height: 37px;
+	width: 45px;
+	margin: 2px 1px;
+	padding-top: 8px;
+	border-radius:3px;
+	box-shadow: 0 1px 1px #c5c4a9;
+	text-align: center;
+	vertical-align: bottom;
+	color:#666;
+	text-shadow: 0 1px 0px #fefee8;
+	background-color: #efefd7;
+	
+	/* disable accidental user selection */
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+	cursor: pointer;
+	position: relative;
+}
+
+.deseret-key:hover {
+	background-color: #e9e8c9;
+}
+
+.deseret-key:active {
+	/*background-color: #efefd7;*/
+	background-color: #e9e8c9;
+	box-shadow: none;
+	margin-top: 3px;
+	margin-bottom: 1px;
+}
+
+#deseret-key-space {
+	width: 65%;
+}
+
+#deseret-key-backspace, #deseret-key-shift {
+	font-family:  'IM Fell English', serif;
+	font-style: italic;
+	font-size: 17px;
+	padding-top: 8px;
+}
+
+#deseret-key-backspace {
+	width: 70px;
+}
+#deseret-key-shift {
+	width: 70px;
+}
+
+#deseret-key-shift.on {
+	background-color: #e9e8c9;
+	box-shadow: none;
+	margin-top: 3px;
+	margin-bottom: 1px;
+}
+
+.deseret-key .deseret-char {
+	font-family: "AdamicBee";
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.deseret-key .keyboard-char {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	display: inline;
+	color: rgba(38,149,184,0.6);
+	text-shadow: none;
+	line-height: 10px;
+	font-size: 12px;
+	font-family: "Arial", "sans-serif";
+	font-style: normal;
+}
+
+#keyboard-letters {
+	display: inline-block;
+	width: 80%;
+}
+
+#keyboard-delete-column {
+	display: inline-block;
+	vertical-align: top;
+}
+
+html, body {
+	background-color: #e9e8c9;
+}
+
+body, h1, div {
+	font-family: 'IM Fell English', serif;
+}
+
+#beehive-img {
+	margin-top: 40px;
+	height: 82px;
+	width: 96px;
+}
+h1 {
+	margin: 8px auto 20px auto;
+	text-align: center;
+	color: #444;
+	font-size: 42px;
+}
+
+h3 {
+	text-align: left;
+	font-style: italic;
+	padding-left: 10px;
+	font-size: 22px;
+	margin-top: 22px;
+	margin-bottom: 6px;
+	color: #444;
+}
+	
+.help-links {
+	margin-top: 10px;
+}
+.help-link {
+	text-align: center;
+	font-size: 16px;
+/*	padding: 20px 0 10px 0;	*/
+}
+a {
+	color: #2695b8;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #1c7995;	
+}
+
+.help-link .glyphicon {
+	padding-left: 4px;
+}
+
+.help-link b {	
+	color: #2695b8;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 18px;
+	display:inline-block;
+	margin-bottom: 6px;
+}
+
+#translate_button {
+	font-size: 22px;
+	margin: 25px 0;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+}
+#translate_button span {
+	vertical-align: top;
+	padding-left: 4px;
+	display: inline-block;
+	margin-right: 8px;
+	margin-top: 2px;
+}
+
+#input_well, #output_well {
+	background-color: #fafbf2;
+	color: #444;
+}
+#output_well {
+	font-size: 18px;
+	font-family: "AdamicBee";
+}
+
+#input_well {
+	font-size: 20px;
+}
+
+#input_well, #output_well {
+	padding: 16px;
+}
+.info-link, .info-link a {
+	display: inline;
+}
+
+.notes {
+	font-style: italic;
+	padding-top: 45px;
+	padding-bottom: 30px;
+	font-size: 18px;
+	color: #333;
+}
+
+.copyright {
+	font-size: 12px;
+	margin: 40px 0px;
+	padding-bottom: 50px;
+	font-style: normal;
+}
+
+.api-link {
+	margin-top: 24px;
+	margin-bottom: 36px;
+}
+.api-link p {
+	margin: 0;
+}
+
+@font-face {
+  font-family: 'AdamicBee';
+  src: url('/fonts/AdamicBee.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/AdamicBee.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/AdamicBee.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/AdamicBee.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/AdamicBee.svg#159e7fbb74bf1cefffafc0996ebf38fb') format('svg'); /* Legacy iOS */
+
+  font-style:   normal;
+  font-weight:  400;
+}
+
+.adamic {
+    font-family: "AdamicBee";
+}
+
+.fb-like {
+	position: absolute;
+	display: block;	
+}
+
+.g-plusone-container {
+	display: block;
+	margin-top: 10px;	
+}
+
+.social-buttons {
+	text-align: left;
+	margin: 30px 0 0 10px;
+	height: 50px;
+}
+
+#brigham-quote {
+	font-style: italic;
+	margin-bottom: 0px;
+	font-size: 16px;
+}
+#brigham-sig {
+	margin-top: 10px;
+	width: 160px;
+	height: 33px;
+	display: inline-block;
+}
+
+/* API doc */
+.api-doc #keyboard-screenshot {
+	width: 193px;
+	height: 99px;
+	border: 1px solid #99997f;
+	margin-left: 100px;
+	margin-bottom: 24px;
+}
+
+.api-doc h2 {
+	margin-top: 44px;
+}
+.api-doc h3 {
+	margin-top: 44px;
+	padding-left: 0;
+	margin-bottom: 8px;
+}
+.resource-url, dt {
+	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.api-doc dl {
+	margin-top: 24px;
+	margin-bottom: 8px;
+}
+.api-doc dt, .api-doc dd {
+	padding-bottom: 0.5em;
+}
+
+.api-doc ul {
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.api-doc .social-buttons {
+	margin-top: 60px;
+}
+.api-doc .copyright {
+	margin-top:0;
+}
+
+.api-doc samp pre {
+	color: #745f00;
+}
+
+.api-doc h1 a {
+	color: #444;
+}
