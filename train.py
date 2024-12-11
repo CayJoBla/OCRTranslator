@@ -79,23 +79,22 @@ def train(
     dataset = dataset.train_test_split(test_size=0.2)
 
     # Initialize the train and test datasets
-    # train_dataset = VisionEncoderDecoderDataset(
-    #     dataset["train"], processor, max_target_length=max_length
-    # )
-    # test_dataset = VisionEncoderDecoderDataset(
-    #     dataset["test"], processor, max_target_length=max_length
-    # )
-
-    # TODO: SWAP FOR THE ABOVE
-    # Downsample the data for testing
     train_dataset = VisionEncoderDecoderDataset(
-        dataset["train"].train_test_split(train_size=32)["train"], 
-        processor
+        dataset["train"], processor, max_target_length=max_length
     )
     test_dataset = VisionEncoderDecoderDataset(
-        dataset["test"].train_test_split(train_size=16)["train"], 
-        processor
+        dataset["test"], processor, max_target_length=max_length
     )
+
+    # Downsample the data for testing
+    # train_dataset = VisionEncoderDecoderDataset(
+    #     dataset["train"].train_test_split(train_size=32)["train"], 
+    #     processor
+    # )
+    # test_dataset = VisionEncoderDecoderDataset(
+    #     dataset["test"].train_test_split(train_size=16)["train"], 
+    #     processor
+    # )
 
     # Set model config params
     model.config.decoder_start_token_id = processor.tokenizer.cls_token_id
