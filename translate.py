@@ -82,7 +82,7 @@ class EnglishToSteelPhonetics:
                 transliteration += self._convert_word(lowercase_word)
         return transliteration.strip()
 
-def english_to_deseret(text, local=False):
+def english_to_deseret(text, local=True):
     if local:
         try:
             from deseret_alphabet_translator import EnglishToDeseret

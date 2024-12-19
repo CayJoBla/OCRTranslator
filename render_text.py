@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw
 
-def text_to_image(text, font, augment=False):
+def text_to_image(text, font):
     """Create an image from a line of text"""
     # Create a temporary image
     temp = Image.new("RGB", (1,1), "white")

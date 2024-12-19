@@ -67,6 +67,7 @@ def train(
     save_steps=500,
     eval_steps=1000,
     output_dir=None,
+    run_name=None,
 ):
     # Load the pretrained model and processor
     processor = TrOCRProcessor.from_pretrained(pretrained_model_name_or_path)
@@ -135,6 +136,8 @@ def train(
         logging_steps=logging_steps,
         save_steps=save_steps,
         eval_steps=eval_steps,
+        report_to="wandb",
+        run_name=run_name
     )
 
     # Define the trainer
@@ -235,6 +238,12 @@ if __name__ == "__main__":
         type=str, 
         default=None,
         help="The output directory where the model predictions and checkpoints will be written."
+    )
+    parser.add_argument(
+        "--run_name", 
+        type=str, 
+        default=None,
+        help="The name to give the wandb run."
     )
     
     args = parser.parse_args()
